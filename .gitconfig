@@ -8,7 +8,7 @@
 [color]
 	ui = always
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore.global
 	attributesfile = ~/.gitattributes
 [color "branch"]
 	current = yellow reverse
