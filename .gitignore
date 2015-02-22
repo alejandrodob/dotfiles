@@ -1,1 +1,6 @@
 .extra
+
+.vim/backups/
+.vim/swaps/
+.vim/undo/
+
