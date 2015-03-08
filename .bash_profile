@@ -14,6 +14,10 @@ fi
 # init rvm
 source ~/.profile
 
+# init nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 
