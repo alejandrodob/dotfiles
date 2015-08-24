@@ -49,6 +49,8 @@
 [pull]
 	ff = only
 [credential]
-	helper = osxkeychain
+
 [push]
 	default = simple
+[credential]
+	helper = cache --timeout=3600
