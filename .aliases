@@ -35,6 +35,6 @@ alias whois="whois -h whois-servers.net"
 alias fs="stat -f \"%z bytes\""
 
 # Vagrant VM start
-alias vagrant in="vagrant up && vagrant ssh"
+alias vagin="vagrant up && vagrant ssh"
 
 
