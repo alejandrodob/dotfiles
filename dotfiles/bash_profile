@@ -17,4 +17,5 @@ syspip(){
 
 # Ensure user-installed binaries take precedence (like homebrew's)
 export PATH=/usr/local/bin:$PATH
+export PATH=~/bin:$PATH
 
