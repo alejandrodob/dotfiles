@@ -18,5 +18,3 @@ syspip(){
 # Ensure user-installed binaries take precedence (like homebrew's)
 export PATH=/usr/local/bin:$PATH
 
-# Select Vim as default editor
-export EDITOR=vim
