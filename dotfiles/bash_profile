@@ -19,8 +19,6 @@ syspip(){
 export PATH=/usr/local/bin:$PATH
 export PATH=~/bin:$PATH
 
-if [ -e /home/alejandro/.nix-profile/etc/profile.d/nix.sh ]; then . /home/alejandro/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
 # Add rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
