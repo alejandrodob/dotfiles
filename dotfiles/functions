@@ -1,13 +1,3 @@
-# Create a new directory and enter it
-function md() {
-	mkdir -p "$@" && cd "$@"
-}
-
-# find shorthand
-function f() {
-    find . -name "$1"
-}
-
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
 	local port="${1:-8000}"
@@ -17,32 +7,19 @@ function server() {
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
 
-# take this repo and copy it to somewhere else minus the .git stuff.
-function gitexport(){
-	mkdir -p "$1"
-	git archive master | tar -x -C "$1"
+# Clean all Docker images and containers
+clean_docker_all(){
+  docker rm $(docker ps -a -q)
+  docker rmi $(docker images -a -q)
 }
 
-# get gzipped size
-function gz() {
-	echo "orig size    (bytes): "
-	cat "$1" | wc -c
-	echo "gzipped size (bytes): "
-	gzip -c "$1" | wc -c
+# Clean all Docker images and non-stopped containers
+clean_docker_unused(){
+  docker rm $(docker ps -q -f status=exited)
+  docker rmi $(docker images -a -q)
 }
 
-# animated gifs from any video
-# from alex sexton   gist.github.com/SlexAxton/4989674
-gifify() {
-  if [[ -n "$1" ]]; then
-    if [[ $2 == '--good' ]]; then
-      ffmpeg -i $1 -r 10 -vcodec png out-static-%05d.png
-      time convert -verbose +dither -layers Optimize -resize 600x600\> out-static*.png  GIF:- | gifsicle --colors 128 --delay=5 --loop --optimize=3 --multifile - > $1.gif
-      rm out-static*.png
-    else
-      ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $1.gif
-    fi
-  else
-    echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
-  fi
+# Clean all intermediate images
+clean_docker_intermediate_images(){
+  docker rmi $(docker images -f "dangling=true" -q)
 }
