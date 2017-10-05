@@ -10,16 +10,6 @@ function server() {
 # Clean all Docker images and containers
 clean_docker_all(){
   docker rm $(docker ps -a -q)
-  docker rmi $(docker images -a -q)
+  docker rmi -f $(docker images -q)
 }
 
-# Clean all Docker images and non-stopped containers
-clean_docker_unused(){
-  docker rm $(docker ps -q -f status=exited)
-  docker rmi $(docker images -a -q)
-}
-
-# Clean all intermediate images
-clean_docker_intermediate_images(){
-  docker rmi $(docker images -f "dangling=true" -q)
-}
