@@ -82,9 +82,7 @@ fi
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
-    echo "en prmer if"
   elif [ -f /etc/bash_completion ]; then
-    echo "en segun if"
     . /etc/bash_completion
   elif [ -f /usr/local/share/bash-completion/bash_completion ]; then
     . /usr/local/share/bash-completion/bash_completion
