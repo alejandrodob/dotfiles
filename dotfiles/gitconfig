@@ -48,8 +48,6 @@
 	email = alejandrodob@gmail.com
 [pull]
 	ff = only
-[credential]
-
 [push]
 	default = simple
 [credential]
